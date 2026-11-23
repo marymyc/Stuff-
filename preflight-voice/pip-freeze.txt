@@ -98,7 +98,7 @@ soxr==1.1.0
 spacy_pkuseg==1.0.2
 srsly==2.5.6
 starlette==0.52.1
--e git+https://github.com/marymyc/Stuff-@b1bf737c6e05ece01fbf73c0a35e0285b6c6dd3b#egg=stuff_video_factory
+-e git+https://github.com/marymyc/Stuff-@16553c4cc56d85ff7066cd5683583feffbdd6a67#egg=stuff_video_factory
 sympy==1.13.1
 threadpoolctl==3.8.0
 tokenizers==0.22.2
