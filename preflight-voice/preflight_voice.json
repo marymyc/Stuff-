@@ -6,13 +6,13 @@
       "name": "load Chatterbox",
       "ok": true,
       "detail": "chatterbox-tts 0.1.7, torch 2.6.0+cpu, ref=built-in default",
-      "seconds": 40.2
+      "seconds": 31.5
     },
     {
       "name": "generate 2 test sentences",
       "ok": true,
-      "detail": "durations=[4.0, 2.6]s gen_time=[46.7, 27.3]s",
-      "seconds": 74.0
+      "detail": "durations=[4.0, 2.6]s gen_time=[46.9, 27.2]s",
+      "seconds": 74.2
     },
     {
       "name": "voice identity metrics (crude)",
