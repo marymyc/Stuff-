@@ -1,0 +1,24 @@
+{
+  "mode": "voice",
+  "ok": true,
+  "checks": [
+    {
+      "name": "load Chatterbox",
+      "ok": true,
+      "detail": "chatterbox-tts 0.1.7, torch 2.6.0+cpu, ref=built-in default",
+      "seconds": 40.2
+    },
+    {
+      "name": "generate 2 test sentences",
+      "ok": true,
+      "detail": "durations=[4.0, 2.6]s gen_time=[46.7, 27.3]s",
+      "seconds": 74.0
+    },
+    {
+      "name": "voice identity metrics (crude)",
+      "ok": true,
+      "detail": "f0_median_hz=[124, 132] (adult male typically 85-155) spectral_corr=0.984 male_range=True",
+      "seconds": 0.0
+    }
+  ]
+}
