@@ -11,7 +11,7 @@ requires-python = ">=3.10"
 dependencies = ["numpy>=1.24", "scipy>=1.10", "Pillow>=10.0", "soundfile>=0.12"]
 
 [project.optional-dependencies]
-tts = ["chatterbox-tts>=0.1.2", "faster-whisper>=1.0"]
+tts = ["chatterbox-tts==0.1.7", "faster-whisper>=1.0"]
 dev = ["pytest>=8"]
 
 [project.scripts]
