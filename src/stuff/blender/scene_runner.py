@@ -146,6 +146,7 @@ def add_camera(scene, shot, focus, rng, frames):
     con.target, con.track_axis, con.up_axis = target, "TRACK_NEGATIVE_Z", "UP_Y"
     cd = bpy.data.cameras.new("cam")
     cd.sensor_fit = "VERTICAL"
+    cd.sensor_height = 24.0
     cd.clip_end = 400
     cam = bpy.data.objects.new("cam", cd)
     cam.parent = rig
@@ -156,8 +157,9 @@ def add_camera(scene, shot, focus, rng, frames):
         rig.keyframe_insert("location", frame=f)
         target.location = cp["fs" if key == "s" else "fe"]
         target.keyframe_insert("location", frame=f)
-        cd.angle = math.radians(cp["fov_s" if key == "s" else "fov_e"])
-        cd.keyframe_insert("angle", frame=f)
+        fov = math.radians(cp["fov_s" if key == "s" else "fov_e"])
+        cd.lens = (cd.sensor_height / 2.0) / math.tan(fov / 2.0)   # vertical FOV via lens ('angle' is not animatable)
+        cd.keyframe_insert("lens", frame=f)
         cam.rotation_euler = (0, 0, 0 if key == "s" else cp["roll_e"])
         cam.keyframe_insert("rotation_euler", frame=f)
     return cam
