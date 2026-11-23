@@ -334,8 +334,8 @@ def fx_explosion(loc, frames):
     """Fireball (front, biggest glow), hot core, and smoke behind/above it; keyframed growth."""
     layers = [  # rgb, emission, final scale, delay, offset (x, y, z)
         ((0.12, 0.1, 0.1), 0.0, 3.0, 5, (0.0, 1.8, 3.2)),     # smoke: behind and higher
-        ((1.0, 0.45, 0.08), 14.0, 3.6, 0, (0.0, 0.0, 1.6)),   # fireball
-        ((1.0, 0.85, 0.35), 22.0, 1.9, 2, (0.0, -0.6, 1.5)),  # core, nearest the camera
+        ((1.0, 0.4, 0.06), 5.0, 3.6, 0, (0.0, 0.0, 1.6)),   # fireball
+        ((1.0, 0.8, 0.3), 8.0, 1.9, 2, (0.0, -0.6, 1.5)),  # core, nearest the camera
     ]
     for k, (rgb, em, s1, delay, off) in enumerate(layers):
         bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=1.0,

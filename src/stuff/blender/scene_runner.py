@@ -4,6 +4,7 @@ import math
 import os
 import random
 import sys
+import time
 
 import bpy
 
@@ -178,6 +179,9 @@ def setup_render(scene, job, out_dir, frames):
         scene.cycles.samples = int(job.get("samples", 24))
         scene.cycles.use_denoising = bool(job.get("denoise", True))
         scene.cycles.device = "CPU"
+        scene.cycles.max_bounces = 3                  # stylised look needs little global illumination
+        scene.cycles.use_adaptive_sampling = True
+        scene.render.use_persistent_data = True
         try:
             prefs = bpy.context.preferences.addons["cycles"].preferences
             for t in ("OPTIX", "CUDA", "HIP", "METAL"):
@@ -203,10 +207,11 @@ def build_shot(shot, job, out_dir, frames):
     cam = add_camera(scene, shot, info["focus"], rng, frames)
     spread = {"close": 0.36, "medium_low": 0.55, "medium": 0.8, "wide": 1.4}.get(shot["shot_size"], 0.8)
     xs = {"left": -spread, "right": spread, "center": 0.0}
+    char_scale = {"wide": 2.2}.get(shot["shot_size"], 1.0)   # oversize heroes in wide shots so they stay readable
     chars = shot.get("characters", [])
     for c in chars:
         path = os.path.join(job["sprite_dir"], f"{c['role']}_{c['expression']}.png")
-        add_sprite(path, (xs.get(c["side"], 0.0), 0.8 * (c["side"] == "center"), 0), cam)
+        add_sprite(path, (xs.get(c["side"], 0.0), 0.8 * (c["side"] == "center"), 0), cam, scale=char_scale)
     for j, p in enumerate(shot.get("props", [])):
         kits.add_prop(p, (-3.0 + 2.0 * j, 3.0, 0))
     if "explosion" in shot.get("fx", []):
@@ -221,9 +226,15 @@ def run(job):
         frames = int(shot.get("frames_override") or max(2, round(shot["render_seconds"] * job["fps"])))
         out_dir = os.path.join(job["out_dir"], f"shot_{shot['id']:03d}")
         os.makedirs(out_dir, exist_ok=True)
+        t0 = time.time()
         build_shot(shot, job, out_dir, frames)
+        t1 = time.time()
         bpy.ops.render.render(animation=True)
-        done.append({"id": shot["id"], "dir": out_dir, "frames": frames})
+        t2 = time.time()
+        done.append({"id": shot["id"], "dir": out_dir, "frames": frames, "build_s": round(t1 - t0, 2),
+                     "render_s": round(t2 - t1, 2), "s_per_frame": round((t2 - t1) / frames, 2)})
+        print(f"[blender] shot {shot['id']} {shot['kit']}/{shot['shot_size']}: {frames} frames, "
+              f"build {t1 - t0:.1f}s render {t2 - t1:.1f}s ({(t2 - t1) / frames:.2f}s/frame)", flush=True)
     with open(os.path.join(job["out_dir"], "done.json"), "w") as f:
         json.dump(done, f)
     return done

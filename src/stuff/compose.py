@@ -35,9 +35,13 @@ def ffmpeg_has_filter(name) -> bool:
     return any(f" {name} " in line for line in out.splitlines())
 
 
-def encode_frames_dir(frames_dir, fps, out_mp4, pattern="f_%04d.png"):
-    run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(fps), "-i", str(Path(frames_dir) / pattern), "-an",
-         "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", str(out_mp4)])
+def encode_frames_dir(frames_dir, fps, out_mp4, pattern="f_%04d.png", out_fps=None):
+    """PNG sequence -> clip. If out_fps > fps, frames are duplicated up (cheap 'on twos' look)."""
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(fps), "-i", str(Path(frames_dir) / pattern), "-an",
+           "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p"]
+    if out_fps and int(out_fps) != int(fps):
+        cmd += ["-r", str(int(out_fps))]
+    run(cmd + [str(out_mp4)])
 
 
 def build_mix(timeline, cfg, out_wav, with_sfx=True) -> str:

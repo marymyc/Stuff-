@@ -16,7 +16,8 @@ def make_job(tl, cfg, workdir, sprite_dir, only=None):
     W, H = video_size(cfg)
     r = cfg["render"]
     shots = [s for s in tl["shots"] if only is None or s["id"] in only]
-    return {"width": W, "height": H, "fps": video_fps(cfg), "engine": r["engine"], "samples": r["samples"],
+    fps = min(int(r.get("blender_fps") or video_fps(cfg)), video_fps(cfg))
+    return {"width": W, "height": H, "fps": fps, "engine": r["engine"], "samples": r["samples"],
             "sprite_dir": str(Path(sprite_dir).resolve()), "out_dir": str((Path(workdir) / "frames").resolve()),
             "shots": shots}
 
@@ -42,7 +43,7 @@ def run_job(job, workdir):
 
 def render_all(tl, cfg, workdir, sprite_dir, clips):
     job = make_job(tl, cfg, workdir, sprite_dir)
-    run_job(job, workdir)
-    fps = video_fps(cfg)
+    stats = run_job(job, workdir)
     for s, clip in zip(tl["shots"], clips):
-        encode_frames_dir(Path(job["out_dir"]) / f"shot_{s['id']:03d}", fps, clip)
+        encode_frames_dir(Path(job["out_dir"]) / f"shot_{s['id']:03d}", job["fps"], clip, out_fps=video_fps(cfg))
+    return stats

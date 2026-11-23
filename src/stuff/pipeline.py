@@ -58,7 +58,11 @@ def stage_render(tl, workdir, cfg):
             render_shot(s, cfg, sprite_dir, c)
     elif renderer == "blender":
         from .render_blender import render_all
-        render_all(tl, cfg, wd, sprite_dir, clips)
+        stats = render_all(tl, cfg, wd, sprite_dir, clips)
+        if stats:
+            n = sum(x["frames"] for x in stats)
+            _log(f"blender: {n} frames, {sum(x['render_s'] for x in stats) / n:.2f}s/frame render, "
+                 f"{sum(x['build_s'] for x in stats):.1f}s scene build")
     else:
         raise ValueError(f"unknown renderer {renderer}")
     return clips

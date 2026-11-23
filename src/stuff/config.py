@@ -19,7 +19,8 @@ DEFAULTS = {
     "align": {"backend": "proportional"},   # proportional | whisper
     "captions": {"font": "DejaVu Sans", "size_ratio": 0.068, "y_ratio": 0.70, "words_per_card": 2,
                  "pop": True, "highlight": "&H0000E0FF&"},
-    "render": {"renderer": "blender", "engine": "CYCLES", "samples": 24, "scale": 1.0, "fps": None},
+    "render": {"renderer": "blender", "engine": "CYCLES", "samples": 24, "scale": 1.0, "fps": None,
+               "blender_fps": 15},   # Blender renders at this fps, FFmpeg duplicates frames up to video.fps
     "sfx": {"enabled": True, "volume": 0.45},
     "transitions": {"dissolve_seconds": 0.35},
 }
