@@ -101,7 +101,8 @@ def join_video(clips, timeline, cfg, out_mp4):
 
 
 def burn_and_mux(video, wav, ass_path, out_mp4, total):
-    work = Path(video).parent
+    video, wav, ass_path, out_mp4 = (Path(x).resolve() for x in (video, wav, ass_path, out_mp4))
+    work = video.parent
     have_ass = ffmpeg_has_filter("ass") and Path(ass_path).exists()
     vf = []
     if have_ass:

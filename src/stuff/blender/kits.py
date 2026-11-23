@@ -319,6 +319,11 @@ def kit_interior(scene, rng, tod):
     win.build("window", mat_solid("window", (0.8, 0.92, 1.0), emit=6.0))
     add_prop("table", (-2.5, 6.5, 0))
     add_prop("lamp", (-5, 8, 0))
+    room = bpy.data.lights.new("room", "POINT")      # interiors need their own light (sun is blocked by the walls)
+    room.energy, room.color = 1800, (1.0, 0.85, 0.65)
+    ro = bpy.data.objects.new("room", room)
+    ro.location = (0, 2, 3.6)
+    link(ro)
     return {"focus": (0.0, 0.0, 1.0)}
 
 
@@ -326,13 +331,18 @@ KITS = {"field": kit_field, "fortress": kit_fortress, "canyon": kit_canyon, "int
 
 
 def fx_explosion(loc, frames):
-    """Expanding emissive fireball + smoke puffs, keyframed."""
-    for k, (rgb, em, s1, delay) in enumerate([((1.0, 0.45, 0.08), 14.0, 3.2, 0), ((1.0, 0.8, 0.3), 20.0, 1.8, 2),
-                                              ((0.12, 0.1, 0.1), 0.0, 4.4, 5)]):
-        bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=1.0, location=(loc[0], loc[1], loc[2] + 1.2 + k * 0.4))
+    """Fireball (front, biggest glow), hot core, and smoke behind/above it; keyframed growth."""
+    layers = [  # rgb, emission, final scale, delay, offset (x, y, z)
+        ((0.12, 0.1, 0.1), 0.0, 3.0, 5, (0.0, 1.8, 3.2)),     # smoke: behind and higher
+        ((1.0, 0.45, 0.08), 14.0, 3.6, 0, (0.0, 0.0, 1.6)),   # fireball
+        ((1.0, 0.85, 0.35), 22.0, 1.9, 2, (0.0, -0.6, 1.5)),  # core, nearest the camera
+    ]
+    for k, (rgb, em, s1, delay, off) in enumerate(layers):
+        bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=1.0,
+                                              location=(loc[0] + off[0], loc[1] + off[1], loc[2] + off[2]))
         ob = bpy.context.active_object
         ob.data.materials.append(mat_solid(f"fx{k}", rgb, 0.9, em))
         ob.scale = (0.05, 0.05, 0.05)
         ob.keyframe_insert("scale", frame=1 + delay)
         ob.scale = (s1, s1, s1)
-        ob.keyframe_insert("scale", frame=min(frames, 1 + delay + 14))
+        ob.keyframe_insert("scale", frame=max(2 + delay, min(frames, 1 + delay + 14)))

@@ -79,6 +79,7 @@ def stage_compose(tl, clips, workdir, cfg, name):
 
 def make(script_path, workdir, cfg, plan_path=None, name=None):
     t0 = time.time()
+    workdir = Path(workdir).resolve()
     name = name or Path(script_path).stem
     plan = stage_plan(script_path, workdir, plan_path)
     _log(f"plan: {len(plan['shots'])} shots, ~{plan['meta']['est_seconds']}s estimated")

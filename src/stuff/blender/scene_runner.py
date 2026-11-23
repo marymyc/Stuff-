@@ -14,8 +14,8 @@ except ImportError:
     import kits
 
 TOD = {
-    "day": dict(top=(0.16, 0.42, 0.95), hor=(0.75, 0.88, 1.0), sun=4.0, col=(1, 0.96, 0.88), elev=55, az=40, amb=1.0),
-    "dawn": dict(top=(0.35, 0.4, 0.75), hor=(1.0, 0.72, 0.5), sun=3.0, col=(1, 0.7, 0.45), elev=10, az=120, amb=0.8),
+    "day": dict(top=(0.16, 0.42, 0.95), hor=(0.75, 0.88, 1.0), sun=2.4, col=(1, 0.96, 0.88), elev=55, az=40, amb=0.75),
+    "dawn": dict(top=(0.35, 0.4, 0.75), hor=(1.0, 0.72, 0.5), sun=2.2, col=(1, 0.7, 0.45), elev=10, az=120, amb=0.7),
     "dusk": dict(top=(0.28, 0.22, 0.55), hor=(1.0, 0.55, 0.35), sun=2.5, col=(1, 0.55, 0.35), elev=7, az=250, amb=0.7),
     "night": dict(top=(0.02, 0.03, 0.12), hor=(0.08, 0.1, 0.25), sun=0.35, col=(0.5, 0.6, 1.0), elev=35, az=40, amb=0.25),
 }
@@ -201,11 +201,12 @@ def build_shot(shot, job, out_dir, frames):
     info = kits.KITS.get(shot["kit"], kits.KITS["field"])(scene, rng, tod)
     set_world(scene, tod)
     cam = add_camera(scene, shot, info["focus"], rng, frames)
-    xs = {"left": -0.9, "right": 0.9, "center": 0.0}
+    spread = {"close": 0.36, "medium_low": 0.55, "medium": 0.8, "wide": 1.4}.get(shot["shot_size"], 0.8)
+    xs = {"left": -spread, "right": spread, "center": 0.0}
     chars = shot.get("characters", [])
-    for i, c in enumerate(chars):
+    for c in chars:
         path = os.path.join(job["sprite_dir"], f"{c['role']}_{c['expression']}.png")
-        add_sprite(path, (xs.get(c["side"], 0) * (1.0 + 0.2 * (len(chars) > 1)), 0.8 * (c["side"] == "center"), 0), cam)
+        add_sprite(path, (xs.get(c["side"], 0.0), 0.8 * (c["side"] == "center"), 0), cam)
     for j, p in enumerate(shot.get("props", [])):
         kits.add_prop(p, (-3.0 + 2.0 * j, 3.0, 0))
     if "explosion" in shot.get("fx", []):
