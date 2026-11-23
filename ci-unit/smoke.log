@@ -2,26 +2,4 @@
 [stuff] WARNING: total 44.998s is outside the 55-75s target; adjust the script length
 [stuff] timeline: 44.998s, voice=silent
 [stuff] rendered 15 clips with pil
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/home/runner/work/Stuff-/Stuff-/src/stuff/__main__.py", line 3, in <module>
-    raise SystemExit(main())
-                     ^^^^^^
-  File "/home/runner/work/Stuff-/Stuff-/src/stuff/cli.py", line 72, in main
-    pipeline.make(a.script, wd, cfg, a.plan, a.name)
-  File "/home/runner/work/Stuff-/Stuff-/src/stuff/pipeline.py", line 89, in make
-    out, v = stage_compose(tl, clips, workdir, cfg, name)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Stuff-/Stuff-/src/stuff/pipeline.py", line 74, in stage_compose
-    captions_burned = compose.burn_and_mux(wd / "joined.mp4", wd / "mix.wav", wd / "captions.ass", out, tl["total_seconds"])
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Stuff-/Stuff-/src/stuff/compose.py", line 113, in burn_and_mux
-    run(cmd, cwd=str(work))
-  File "/home/runner/work/Stuff-/Stuff-/src/stuff/compose.py", line 24, in run
-    raise RuntimeError(f"command failed ({r.returncode}): {' '.join(map(str, cmd))[:300]}\n{r.stderr[-1500:]}")
-RuntimeError: command failed (254): ffmpeg -y -loglevel error -i joined.mp4 -i mix.wav -vf ass=captions.ass:fontsdir=/usr/share/fonts/truetype/dejavu -map 0:v -map 1:a -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -c:a aac -b:a 192k -t 44.998 -movflags +faststart work/smoke/sample_script.mp4
-[out#0/mp4 @ 0x59f444678d40] Error opening output work/smoke/sample_script.mp4: No such file or directory
-Error opening output file work/smoke/sample_script.mp4.
-Error opening output files: No such file or directory
-
+[stuff] done: /home/runner/work/Stuff-/Stuff-/work/smoke/sample_script.mp4 {'width': 180, 'height': 320, 'duration': 45.0, 'has_audio': True, 'ok': True, 'captions_burned': True, 'seconds_taken': 4.9}
