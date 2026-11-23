@@ -1,19 +1,18 @@
 {
   "mode": "blender",
-  "ok": false,
+  "ok": true,
   "checks": [
     {
       "name": "import bpy",
       "ok": true,
       "detail": "bpy 4.2.0",
-      "seconds": 0.3
+      "seconds": 0.4
     },
     {
       "name": "render 4 kits (Cycles CPU, tiny)",
-      "ok": false,
-      "detail": "TypeError: bpy_struct.keyframe_insert() property \"angle\" not animatable",
-      "trace": "Traceback (most recent call last):\n  File \"/home/runner/work/Stuff-/Stuff-/src/stuff/preflight.py\", line 20, in _check\n    detail = fn()\n             ^^^^\n  File \"/home/runner/work/Stuff-/Stuff-/src/stuff/preflight.py\", line 97, in render_kits\n    render_blender.run_job(job, wd)\n  File \"/home/runner/work/Stuff-/Stuff-/src/stuff/render_blender.py\", line 30, in run_job\n    return scene_runner.run(job)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/Stuff-/Stuff-/src/stuff/blender/scene_runner.py\", line 221, in run\n    build_shot(shot, job, out_dir, frames)\n  File \"/home/runner/work/Stuff-/Stuff-/src/stuff/blender/scene_runner.py\", line 201, in build_shot\n    cam = add_camera(scene, shot, info[\"focus\"], rng, frames)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/Stuff-/Stuff-/src/stuff/blender/scene_runner.py\", line 160, in add_camera\n    cd.keyframe_insert(\"angle\", frame=f)\nTypeError: bpy_struct.keyframe_insert() property \"angle\" not animatable\n",
-      "seconds": 0.2
+      "ok": true,
+      "detail": "fortress:2f std=25.2; canyon:2f std=46.0; interior:2f std=24.8; field:2f std=34.6; 12.0s total",
+      "seconds": 12.2
     }
   ]
 }
