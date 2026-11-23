@@ -1,0 +1,8 @@
+work/
+reports/
+__pycache__/
+*.pyc
+*.egg-info/
+assets/voice/*.wav
+assets/voice/*.mp3
+.env

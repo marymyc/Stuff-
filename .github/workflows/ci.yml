@@ -1,0 +1,33 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  unit-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: System packages
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Preflight (light)
+        run: python -m stuff preflight --mode light --out reports
+      - name: Unit tests
+        run: python -m pytest 2>&1 | tee pytest.log
+      - name: Smoke (silent voice + preview renderer, full sample script)
+        run: python -m stuff make examples/sample_script.txt --voice silent --renderer pil --scale 0.25 --fps 10 --workdir work/smoke 2>&1 | tee smoke.log
+      - name: Publish report to ci-report branch
+        if: ${{ always() }}
+        env:
+          JOB_STATUS: ${{ job.status }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/publish_report.sh ci-unit

@@ -1,0 +1,45 @@
+{
+  "video": {
+    "width": 720,
+    "height": 1280,
+    "fps": 30,
+    "min_seconds": 55,
+    "max_seconds": 75,
+    "tail_hold": 0.5
+  },
+  "voice": {
+    "backend": "chatterbox",
+    "reference_wav": null,
+    "seed": 1234,
+    "exaggeration": 0.5,
+    "cfg_weight": 0.5,
+    "temperature": 0.7,
+    "gap_seconds": 0.12,
+    "lead": 0.04
+  },
+  "align": {
+    "backend": "proportional"
+  },
+  "captions": {
+    "font": "DejaVu Sans",
+    "size_ratio": 0.068,
+    "y_ratio": 0.7,
+    "words_per_card": 2,
+    "pop": true,
+    "highlight": "&H0000E0FF&"
+  },
+  "render": {
+    "renderer": "blender",
+    "engine": "CYCLES",
+    "samples": 24,
+    "scale": 1.0,
+    "fps": null
+  },
+  "sfx": {
+    "enabled": true,
+    "volume": 0.45
+  },
+  "transitions": {
+    "dissolve_seconds": 0.35
+  }
+}
