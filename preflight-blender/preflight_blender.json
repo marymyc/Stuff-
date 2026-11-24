@@ -6,13 +6,13 @@
       "name": "import bpy",
       "ok": true,
       "detail": "bpy 4.2.0",
-      "seconds": 0.4
+      "seconds": 0.3
     },
     {
       "name": "render 4 kits (Cycles CPU, tiny)",
       "ok": true,
-      "detail": "fortress:2f std=25.1; canyon:2f std=45.8; interior:2f std=73.9; field:2f std=60.7; 9.8s total",
-      "seconds": 10.0
+      "detail": "fortress:2f std=25.1; canyon:2f std=45.8; interior:2f std=73.9; field:2f std=60.7; 7.8s total",
+      "seconds": 8.0
     }
   ]
 }
