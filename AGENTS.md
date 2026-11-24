@@ -1,5 +1,11 @@
 # Operator guide for AI models
 
+
+## HARD RULE: never render in the agent's own environment
+Do NOT run any render (Remotion stills/video, Blender, frame/video generation) in your own sandbox or CI, even "just one still".
+Only the USER runs renders (their GPU / their Colab). You may: write code, typecheck (`npx tsc --noEmit`), run unit tests,
+build plans (`tools/make_plan.py`) and audio, and push to GitHub. Anything visual stays unverified until the user reports back.
+
 **The user gives you ONE input: the English narration script.** Do not ask for anything else
 (no style choices, camera, voice, scenes). Defaults are in `config/default.json`.
 

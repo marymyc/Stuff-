@@ -1,0 +1,15 @@
+node_modules/
+out/
+backup/
+remotion-tmp/
+*.mp4
+projects/*/voice/*.wav
+projects/*/audio/*.wav
+.env
+__pycache__/
+node_modules/
+out/
+remotion-tmp/
+references/frames/
+references/sheets/
+.env

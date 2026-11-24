@@ -46,6 +46,12 @@ python -m stuff preflight --mode all                                         # �
 
 لإضافة موضوع جديد (بحر أو مدينة أو مختبر…) اكتب دالة kit جديدة في `kits.py` وسجّلها في `KITS`، وأضف كلماتها المفتاحية في `planner.KIT_WORDS`.
 
+## المحرك الجديد (الأسلوب المقترح بدل Blender)
+مبني على قالب `animated-shorts-template` الخاص بك (Remotion + three.js): شخصيات 2D بحبر وتعابير، خامات مرسومة، عمق ميدان.
+- التفاصيل: `docs/ENGINE.md` والمجلد `engine/`.
+- التشغيل: `notebooks/colab_engine.ipynb` (يلزمه GPU؛ الخلية 2 تفحصه). **الرندر يشغّله المستخدم فقط.**
+- مسار Blender السابق باقٍ كاحتياط.
+
 ## الاختبار والتحقق
 - `ci.yml`: اختبارات الوحدة + مسار كامل بصوت صامت ورندر معاينة.
 - `preflight.yml`: Blender الحقيقي (4 بيئات) وChatterbox الحقيقي.

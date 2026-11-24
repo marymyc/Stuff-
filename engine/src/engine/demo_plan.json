@@ -1,0 +1,873 @@
+{
+ "fps": 30,
+ "total": 1350,
+ "flashAt": 109,
+ "captions": true,
+ "shots": [
+  {
+   "id": 1,
+   "a": 0,
+   "b": 109,
+   "set": "canyon",
+   "light": "day",
+   "size": "wide_aerial",
+   "move": "fly_forward",
+   "chars": [],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 2,
+   "a": 109,
+   "b": 217,
+   "set": "canyon",
+   "light": "day",
+   "size": "close",
+   "move": "push_in",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.3
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 3,
+   "a": 217,
+   "b": 268,
+   "set": "canyon",
+   "light": "day",
+   "size": "wide_aerial",
+   "move": "fly_forward",
+   "chars": [],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 4,
+   "a": 268,
+   "b": 400,
+   "set": "canyon",
+   "light": "day",
+   "size": "medium_low",
+   "move": "push_in_low",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "stern",
+     "x": -0.5
+    },
+    {
+     "outfit": "tycoon",
+     "expr": "stern",
+     "x": 0.5
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 5,
+   "a": 400,
+   "b": 509,
+   "set": "canyon",
+   "light": "day",
+   "size": "medium",
+   "move": "orbit_slow",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.8
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 6,
+   "a": 509,
+   "b": 583,
+   "set": "canyon",
+   "light": "day",
+   "size": "macro",
+   "move": "slide",
+   "chars": [],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 7,
+   "a": 583,
+   "b": 645,
+   "set": "canyon",
+   "light": "day",
+   "size": "close",
+   "move": "push_in",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "smile_closed",
+     "x": -0.3
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 8,
+   "a": 645,
+   "b": 687,
+   "set": "canyon",
+   "light": "day",
+   "size": "close",
+   "move": "push_in",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.3
+    },
+    {
+     "outfit": "tycoon",
+     "expr": "stern",
+     "x": 0.3
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 9,
+   "a": 687,
+   "b": 807,
+   "set": "canyon",
+   "light": "day",
+   "size": "close",
+   "move": "push_in",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "grin",
+     "x": -0.3
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 10,
+   "a": 807,
+   "b": 916,
+   "set": "canyon",
+   "light": "day",
+   "size": "medium",
+   "move": "orbit_slow",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "nervous",
+     "x": -0.8
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 11,
+   "a": 916,
+   "b": 1013,
+   "set": "canyon",
+   "light": "day",
+   "size": "medium",
+   "move": "orbit_slow",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.8
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 12,
+   "a": 1013,
+   "b": 1122,
+   "set": "canyon",
+   "light": "day",
+   "size": "close",
+   "move": "push_in",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.3
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 13,
+   "a": 1122,
+   "b": 1230,
+   "set": "canyon",
+   "light": "day",
+   "size": "wide",
+   "move": "pull_back",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "stern",
+     "x": -1.6,
+     "scale": 1.8
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 14,
+   "a": 1230,
+   "b": 1293,
+   "set": "canyon",
+   "light": "day",
+   "size": "medium_low",
+   "move": "dutch_push",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.5
+    }
+   ],
+   "props": [],
+   "fx": []
+  },
+  {
+   "id": 15,
+   "a": 1293,
+   "b": 1350,
+   "set": "canyon",
+   "light": "day",
+   "size": "medium",
+   "move": "dutch_push",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "shock",
+     "x": -0.8
+    }
+   ],
+   "props": [],
+   "fx": [
+    "burst"
+   ]
+  }
+ ],
+ "words": [
+  {
+   "w": "In",
+   "s": 0.04,
+   "e": 0.239
+  },
+  {
+   "w": "1869,",
+   "s": 0.239,
+   "e": 0.693
+  },
+  {
+   "w": "two",
+   "s": 0.693,
+   "e": 0.948
+  },
+  {
+   "w": "railroad",
+   "s": 0.948,
+   "e": 1.487
+  },
+  {
+   "w": "companies",
+   "s": 1.487,
+   "e": 2.083
+  },
+  {
+   "w": "were",
+   "s": 2.083,
+   "e": 2.395
+  },
+  {
+   "w": "racing",
+   "s": 2.395,
+   "e": 2.821
+  },
+  {
+   "w": "across",
+   "s": 2.821,
+   "e": 3.247
+  },
+  {
+   "w": "the",
+   "s": 3.247,
+   "e": 3.502
+  },
+  {
+   "w": "desert,",
+   "s": 3.662,
+   "e": 4.315
+  },
+  {
+   "w": "and",
+   "s": 4.315,
+   "e": 4.609
+  },
+  {
+   "w": "the",
+   "s": 4.609,
+   "e": 4.903
+  },
+  {
+   "w": "first",
+   "s": 4.903,
+   "e": 5.328
+  },
+  {
+   "w": "line",
+   "s": 5.328,
+   "e": 5.687
+  },
+  {
+   "w": "to",
+   "s": 5.687,
+   "e": 5.916
+  },
+  {
+   "w": "finish",
+   "s": 5.916,
+   "e": 6.405
+  },
+  {
+   "w": "would",
+   "s": 6.405,
+   "e": 6.83
+  },
+  {
+   "w": "get",
+   "s": 6.83,
+   "e": 7.124
+  },
+  {
+   "w": "the",
+   "s": 7.284,
+   "e": 7.507
+  },
+  {
+   "w": "whole",
+   "s": 7.507,
+   "e": 7.83
+  },
+  {
+   "w": "country's",
+   "s": 7.83,
+   "e": 8.301
+  },
+  {
+   "w": "money.",
+   "s": 8.301,
+   "e": 8.822
+  },
+  {
+   "w": "The",
+   "s": 8.982,
+   "e": 9.239
+  },
+  {
+   "w": "workers",
+   "s": 9.239,
+   "e": 9.725
+  },
+  {
+   "w": "were",
+   "s": 9.725,
+   "e": 10.04
+  },
+  {
+   "w": "exhausted,",
+   "s": 10.04,
+   "e": 10.783
+  },
+  {
+   "w": "but",
+   "s": 10.783,
+   "e": 11.04
+  },
+  {
+   "w": "the",
+   "s": 11.04,
+   "e": 11.298
+  },
+  {
+   "w": "owner",
+   "s": 11.298,
+   "e": 11.669
+  },
+  {
+   "w": "refused",
+   "s": 11.669,
+   "e": 12.155
+  },
+  {
+   "w": "to",
+   "s": 12.155,
+   "e": 12.355
+  },
+  {
+   "w": "slow",
+   "s": 12.355,
+   "e": 12.67
+  },
+  {
+   "w": "down.",
+   "s": 12.67,
+   "e": 13.213
+  },
+  {
+   "w": "Then",
+   "s": 13.373,
+   "e": 13.668
+  },
+  {
+   "w": "a",
+   "s": 13.668,
+   "e": 13.802
+  },
+  {
+   "w": "young",
+   "s": 13.802,
+   "e": 14.151
+  },
+  {
+   "w": "engineer",
+   "s": 14.151,
+   "e": 14.661
+  },
+  {
+   "w": "noticed",
+   "s": 14.661,
+   "e": 15.117
+  },
+  {
+   "w": "something",
+   "s": 15.117,
+   "e": 15.681
+  },
+  {
+   "w": "nobody",
+   "s": 15.681,
+   "e": 16.084
+  },
+  {
+   "w": "else",
+   "s": 16.084,
+   "e": 16.379
+  },
+  {
+   "w": "saw.",
+   "s": 16.379,
+   "e": 16.835
+  },
+  {
+   "w": "Every",
+   "s": 16.995,
+   "e": 17.471
+  },
+  {
+   "w": "rail",
+   "s": 17.471,
+   "e": 17.874
+  },
+  {
+   "w": "had",
+   "s": 17.874,
+   "e": 18.204
+  },
+  {
+   "w": "a",
+   "s": 18.204,
+   "e": 18.387
+  },
+  {
+   "w": "tiny",
+   "s": 18.387,
+   "e": 18.79
+  },
+  {
+   "w": "gap,",
+   "s": 18.79,
+   "e": 19.303
+  },
+  {
+   "w": "only",
+   "s": 19.463,
+   "e": 19.77
+  },
+  {
+   "w": "a",
+   "s": 19.77,
+   "e": 19.909
+  },
+  {
+   "w": "few",
+   "s": 19.909,
+   "e": 20.16
+  },
+  {
+   "w": "millimeters",
+   "s": 20.16,
+   "e": 20.856
+  },
+  {
+   "w": "wide.",
+   "s": 20.856,
+   "e": 21.386
+  },
+  {
+   "w": "The",
+   "s": 21.546,
+   "e": 21.776
+  },
+  {
+   "w": "owner",
+   "s": 21.776,
+   "e": 22.108
+  },
+  {
+   "w": "laughed.",
+   "s": 22.108,
+   "e": 22.746
+  },
+  {
+   "w": "Perfect",
+   "s": 22.946,
+   "e": 23.434
+  },
+  {
+   "w": "rails,",
+   "s": 23.434,
+   "e": 23.951
+  },
+  {
+   "w": "he",
+   "s": 23.951,
+   "e": 24.151
+  },
+  {
+   "w": "said,",
+   "s": 24.151,
+   "e": 24.611
+  },
+  {
+   "w": "are",
+   "s": 24.611,
+   "e": 24.869
+  },
+  {
+   "w": "the",
+   "s": 24.869,
+   "e": 25.127
+  },
+  {
+   "w": "only",
+   "s": 25.127,
+   "e": 25.443
+  },
+  {
+   "w": "rails",
+   "s": 25.443,
+   "e": 25.816
+  },
+  {
+   "w": "that",
+   "s": 25.816,
+   "e": 26.132
+  },
+  {
+   "w": "matter.",
+   "s": 26.132,
+   "e": 26.792
+  },
+  {
+   "w": "But",
+   "s": 26.952,
+   "e": 27.23
+  },
+  {
+   "w": "summer",
+   "s": 27.23,
+   "e": 27.694
+  },
+  {
+   "w": "came,",
+   "s": 27.694,
+   "e": 28.188
+  },
+  {
+   "w": "and",
+   "s": 28.188,
+   "e": 28.467
+  },
+  {
+   "w": "the",
+   "s": 28.467,
+   "e": 28.745
+  },
+  {
+   "w": "sun",
+   "s": 28.745,
+   "e": 29.023
+  },
+  {
+   "w": "heated",
+   "s": 29.023,
+   "e": 29.487
+  },
+  {
+   "w": "the",
+   "s": 29.487,
+   "e": 29.765
+  },
+  {
+   "w": "steel.",
+   "s": 29.765,
+   "e": 30.414
+  },
+  {
+   "w": "Every",
+   "s": 30.574,
+   "e": 30.902
+  },
+  {
+   "w": "rail",
+   "s": 30.902,
+   "e": 31.179
+  },
+  {
+   "w": "grew",
+   "s": 31.179,
+   "e": 31.457
+  },
+  {
+   "w": "longer,",
+   "s": 31.457,
+   "e": 31.961
+  },
+  {
+   "w": "pushing",
+   "s": 31.961,
+   "e": 32.39
+  },
+  {
+   "w": "against",
+   "s": 32.39,
+   "e": 32.819
+  },
+  {
+   "w": "its",
+   "s": 32.819,
+   "e": 33.046
+  },
+  {
+   "w": "neighbor,",
+   "s": 33.046,
+   "e": 33.651
+  },
+  {
+   "w": "and",
+   "s": 33.811,
+   "e": 34.119
+  },
+  {
+   "w": "the",
+   "s": 34.119,
+   "e": 34.428
+  },
+  {
+   "w": "track",
+   "s": 34.428,
+   "e": 34.874
+  },
+  {
+   "w": "began",
+   "s": 34.874,
+   "e": 35.319
+  },
+  {
+   "w": "to",
+   "s": 35.319,
+   "e": 35.559
+  },
+  {
+   "w": "twist",
+   "s": 35.559,
+   "e": 36.005
+  },
+  {
+   "w": "like",
+   "s": 36.005,
+   "e": 36.382
+  },
+  {
+   "w": "a",
+   "s": 36.382,
+   "e": 36.553
+  },
+  {
+   "w": "snake.",
+   "s": 36.553,
+   "e": 37.273
+  },
+  {
+   "w": "The",
+   "s": 37.433,
+   "e": 37.714
+  },
+  {
+   "w": "first",
+   "s": 37.714,
+   "e": 38.119
+  },
+  {
+   "w": "train",
+   "s": 38.119,
+   "e": 38.525
+  },
+  {
+   "w": "that",
+   "s": 38.525,
+   "e": 38.868
+  },
+  {
+   "w": "crossed",
+   "s": 38.868,
+   "e": 39.398
+  },
+  {
+   "w": "the",
+   "s": 39.398,
+   "e": 39.679
+  },
+  {
+   "w": "bridge",
+   "s": 39.679,
+   "e": 40.146
+  },
+  {
+   "w": "never",
+   "s": 40.146,
+   "e": 40.552
+  },
+  {
+   "w": "made",
+   "s": 40.552,
+   "e": 40.895
+  },
+  {
+   "w": "it",
+   "s": 41.055,
+   "e": 41.3
+  },
+  {
+   "w": "to",
+   "s": 41.3,
+   "e": 41.544
+  },
+  {
+   "w": "the",
+   "s": 41.544,
+   "e": 41.859
+  },
+  {
+   "w": "other",
+   "s": 41.859,
+   "e": 42.314
+  },
+  {
+   "w": "side.",
+   "s": 42.314,
+   "e": 42.978
+  },
+  {
+   "w": "Boom.",
+   "s": 43.138,
+   "e": 44.338
+  }
+ ],
+ "voice": {
+  "wavs": [
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_000.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_001.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_002.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_003.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_004.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_005.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_006.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_007.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_008.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_009.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_010.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_011.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_012.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_013.wav",
+   "/home/claude/Stuff-/engine/src/engine/voice_work/voice/shot_014.wav"
+  ],
+  "starts": [
+   0.04,
+   3.662,
+   7.284,
+   8.982,
+   13.373,
+   16.994999999999997,
+   19.462999999999997,
+   21.546,
+   22.945999999999998,
+   26.951999999999998,
+   30.573999999999998,
+   33.811,
+   37.433,
+   41.055,
+   43.138
+  ]
+ },
+ "sfx": [
+  [
+   "whoosh",
+   0.0,
+   0.6
+  ],
+  [
+   "whoosh",
+   7.244,
+   0.6
+  ],
+  [
+   "pop",
+   16.955,
+   0.5
+  ],
+  [
+   "ding",
+   23.106,
+   0.5
+  ],
+  [
+   "boom",
+   43.198,
+   1.0
+  ]
+ ]
+}

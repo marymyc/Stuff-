@@ -32,3 +32,6 @@ Last verified commit: `b1bf737`.
 7. Scene build + render was slow (first end-to-end 174 s for 117 tiny frames) -> Cycles max bounces 3, adaptive sampling, persistent data, Blender renders at 15 fps and FFmpeg duplicates frames to 30 fps (58.7 s afterwards; setting changes, not a controlled benchmark).
 8. First heavy voice run sat >8 min in the apt step and was cancelled; the re-run passed. Cause not investigated.
 9. The repository already contained a stale bootstrap workflow and README from an earlier attempt; they had been deleted before this build started and nothing from them was used.
+
+## Engine (engine/)
+CI (`engine.yml`) runs typecheck and plan generation only. Renders are never run by the assistant or CI (see `docs/ENGINE.md`).
