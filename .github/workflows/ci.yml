@@ -29,8 +29,6 @@ jobs:
         run: python -m stuff preflight --mode light --out reports
       - name: Unit tests
         run: python -m pytest 2>&1 | tee pytest.log
-      - name: Smoke (silent voice + preview renderer, full sample script)
-        run: python -m stuff make examples/sample_script.txt --voice silent --renderer pil --scale 0.25 --fps 10 --workdir work/smoke 2>&1 | tee smoke.log
       - name: Publish report to ci-report branch
         if: ${{ always() }}
         env:

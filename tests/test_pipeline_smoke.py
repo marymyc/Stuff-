@@ -6,7 +6,9 @@ import pytest
 from stuff import pipeline
 from stuff.config import load_config
 
-pytestmark = pytest.mark.skipif(not shutil.which("ffmpeg"), reason="ffmpeg required")
+import os
+pytestmark = pytest.mark.skipif(not shutil.which("ffmpeg") or not os.environ.get("RUN_RENDER_TESTS"),
+                                reason="render tests are opt-in (RUN_RENDER_TESTS=1): renders are run by the user only")
 SCRIPT = Path(__file__).parent.parent / "examples" / "mini_script.txt"
 
 

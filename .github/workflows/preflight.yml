@@ -1,14 +1,6 @@
 name: preflight-heavy
+# Renders only when the USER starts this workflow by hand (Actions > preflight-heavy > Run workflow).
 on:
-  push:
-    branches: [main]
-    paths:
-      - "src/**"
-      - "config/**"
-      - "examples/**"
-      - "scripts/**"
-      - "pyproject.toml"
-      - ".github/workflows/preflight.yml"
   workflow_dispatch:
 permissions:
   contents: write

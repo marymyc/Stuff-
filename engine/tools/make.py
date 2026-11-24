@@ -47,10 +47,11 @@ if __name__ == "__main__":
     plan = make(os.path.abspath(a.script), plan_path, a.voice, a.ref_voice)
     print(f"plan: {len(plan['shots'])} shots, {plan['total'] / plan['fps']:.1f}s")
     wav = os.path.join(out, "mix.wav"); mix(plan, wav)
+    props_path = os.path.join(out, "props.json"); json.dump({"plan": plan}, open(props_path, "w"))   # Remotion inputProps = {plan}
     env = dict(os.environ); tmp = os.path.abspath(env.get("REMOTION_TMP", os.path.join(ROOT, "remotion-tmp"))); os.makedirs(tmp, exist_ok=True)
     env["TEMP"] = env["TMP"] = env["TMPDIR"] = tmp
     video, final = os.path.join(out, "video.mp4"), os.path.join(out, "final.mp4")
-    cmd = ["npx", "remotion", "render", "src/index.ts", "Short", video, f"--props={plan_path}", "--codec", "h264", "--crf", "16",
+    cmd = ["npx", "remotion", "render", "src/index.ts", "Short", video, f"--props={props_path}", "--codec", "h264", "--crf", "16",
            "--scale", a.scale, f"--gl={a.gl}"] + ([f"--frames={a.frames}"] if a.frames else [])
     if env.get("CHROME_PATH"): cmd += ["--browser-executable", env["CHROME_PATH"]]
     run(cmd, env)
