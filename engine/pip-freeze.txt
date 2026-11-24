@@ -9,5 +9,5 @@ Pygments==2.21.0
 pytest==9.2.0
 scipy==1.17.1
 soundfile==0.14.0
--e git+https://github.com/marymyc/Stuff-@b1335a773106325521b879f8e050951841b23967#egg=stuff_video_factory
+-e git+https://github.com/marymyc/Stuff-@2133006fbbd6d831b6542068f07899d5e94d3e6d#egg=stuff_video_factory
 typing_extensions==4.16.0
