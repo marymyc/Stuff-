@@ -13,6 +13,7 @@ export type PlanShot = {
   size: "wide_aerial" | "wide" | "medium" | "medium_low" | "close" | "macro";
   move: string;                         // fly_forward pull_back orbit_slow push_in push_in_low slide dutch_push
   chars: Who[]; props: string[]; fx: string[];
+  focus?: string;                       // insert shot: close-up of one object (coin paper calendar newspaper caliper thermometer moneybag map clock marble)
   xfade?: number;                       // crossfade frames at the START of this shot (place/time change)
 };
 export type Word = { w: string; s: number; e: number };

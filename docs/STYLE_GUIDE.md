@@ -21,3 +21,10 @@ Measured/observed on two 9:16 shorts (720x1280, 30 fps, ~65-67 s). Timings are a
 
 ## Sound
 - Narration + simple SFX hits (whoosh on aerial moves, boom on explosions, rumble on collapse, spark/hiss on fuses, ding on success). SFX here are procedural (no licensing).
+
+## Insert shots (cutaways), verified on the railroad reference frame by frame
+Between character shots the references cut to ~1 s close-ups of the object being talked about: a pebble (21.5 s), a glass marble rolling
+smoothly (24.5 s), the VANDERGOLD luxury train window (26.5 s), a caliper on the rail gap (41.5 s), a coin in the gap, the calendar flipping
+from MAY to JULY (42.5 s), a sheet of paper in the narrower gap (43.5 s), the last-second reaction shot (hero + boss watching the blast, 64.9 s).
+The planner now emits these as `focus` shots (macro, no cast) for the keywords in `planner.INSERTS`
+(coin, paper, calendar, newspaper, caliper, thermometer, moneybag, map, clock, marble).

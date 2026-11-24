@@ -5,7 +5,7 @@ import { LIGHTS, LOOK, LightPreset } from "../videos/bridge/lights";
 import { TONE, CHAR, untone } from "../videos/bridge/shade";
 import { NOINK } from "../videos/bridge/ink";
 import { ctex, cloudHD } from "../videos/bridge/paint";
-import { buildSet, buildProps } from "./sets";
+import { buildSet, buildProps, buildFocus } from "./sets";
 import { camAt } from "./camera";
 import { stageShot } from "./stage";
 import { GROUND_Y, Plan } from "./plan";
@@ -37,6 +37,7 @@ export class GenericWorld {
   private clouds: THREE.Mesh[] = [];
   private sets = new Map<string, THREE.Group>();
   private props: THREE.Group[] = [];
+  private foci: (THREE.Group | null)[] = [];
   private sunCache = new Map<number, THREE.Vector3>();
   private frustum = new THREE.Frustum(); private m4 = new THREE.Matrix4(); private v = new THREE.Vector3(); private sph = new THREE.Sphere();
 
@@ -77,6 +78,10 @@ export class GenericWorld {
     for (const s of plan.shots) {
       if (!this.sets.has(s.set)) { const g = buildSet(s.set); g.visible = false; this.sets.set(s.set, g); R.add(g); }
     }
+    this.foci = plan.shots.map((s) => {
+      if (!s.focus) return null;
+      const g = buildFocus(s.focus); g.position.y = GROUND_Y[s.set] ?? 0; g.visible = false; R.add(g); return g;
+    });
     this.props = plan.shots.map((s) => { const g = buildProps(s.props); g.position.y = GROUND_Y[s.set] ?? 0; g.visible = false; R.add(g); return g; });
   }
 
@@ -108,6 +113,7 @@ export class GenericWorld {
     cam.layers.enable(NOINK);
     this.sets.forEach((g, name) => { g.visible = name === s.set; });
     this.props.forEach((g, k) => { g.visible = k === i; });
+    this.foci.forEach((g, k) => { if (g) g.visible = k === i; });
     const sunDir = this.shotSun(plan, i, L);
     this.hemi.color.set(L.sky); this.hemi.groundColor.set(L.ground); this.hemi.intensity = L.hemiI;
     this.sun.color.set(L.sunCol); this.sun.intensity = L.sunI;

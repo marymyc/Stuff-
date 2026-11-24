@@ -46,6 +46,12 @@ CROWD = ["everyone", "soldiers", "workers", "crowd", "people", "army", "guards",
 PROPS = {"cart": ["cart", "wagon"], "crate": ["crate", "box", "boxes"], "barrel": ["barrel", "barrels"],
          "umbrella": ["umbrella", "parasol"], "lamp": ["lamp", "lantern", "torch", "torches"],
          "table": ["table", "desk"]}
+INSERTS = {  # object keyword -> close-up "insert" shot of that object (macro, no cast), like the references' cutaways
+    "coin": ["coin", "coins"], "paper": ["paper", "sheet"], "calendar": ["calendar", "july"],
+    "newspaper": ["newspaper", "newspapers", "headline", "herald"], "caliper": ["caliper", "gauge", "measure", "measured", "measuring"],
+    "thermometer": ["thermometer", "temperature", "degrees"], "moneybag": ["money", "dollars", "cash", "fortune", "profit"],
+    "map": ["map", "maps"], "clock": ["clock", "watch", "o'clock"], "marble": ["marble", "ball"],
+}
 BREAK_BEFORE = {"and", "but", "because", "until", "while", "when", "so", "then", "after", "before", "which",
                 "where", "as"}
 EMPH_WORDS = {"never", "only", "perfect", "impossible", "million", "billion", "every", "nobody", "everything"}
@@ -103,6 +109,13 @@ def detect_expression(tokens, default="neutral"):
         if any(t in words for t in tokens):
             return expr
     return default
+
+
+def pick_focus(tokens):
+    for name, words in INSERTS.items():
+        if any(t in words for t in tokens):
+            return name
+    return None
 
 
 def pick_size(text, low, tokens, i, prev_sizes):
@@ -180,6 +193,9 @@ def build_plan(text: str, title: str | None = None) -> dict:
             transition = "dissolve" if i > 0 else "cut"
         expr = detect_expression(toks)
         size = pick_size(t, low, toks, i, sizes)
+        focus = pick_focus(toks) if i > 0 else None      # the hook (shot 1) stays an establishing shot
+        if focus:
+            size = "macro"
         move = SIZE_MOVE[size]
         if i >= n - 2 and n >= 4 and size in ("close", "medium", "medium_low"):
             move = "dutch_push"
@@ -190,6 +206,7 @@ def build_plan(text: str, title: str | None = None) -> dict:
             "id": i, "text": t, "kit": kit, "tod": tod, "shot_size": size, "camera_move": move,
             "transition": transition, "characters": pick_characters(toks, size, expr), "props": props,
             "fx": fx, "sfx": pick_sfx(toks, size, i, expr), "emphasis": pick_emphasis(t),
+            **({"focus": focus} if focus else {}),
         })
     words = sum(len(s["text"].split()) for s in shots)
     return {"version": 1, "title": title or "untitled", "meta": {"words": words, "est_seconds": round(words / WPS, 1)},

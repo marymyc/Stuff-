@@ -22,6 +22,13 @@ const M = {
   hill: () => lam("hillC", () => ({ color: "#6fae56" })),
   mount: () => lam("mountC", () => ({ color: "#7f93bd" })),
   cloth: (hex: string) => lam(`cloth${hex}`, () => ({ color: hex, side: THREE.DoubleSide })),
+  gold: () => lam("goldC", () => ({ color: "#e8b730" })),
+  paper: () => lam("paperC", () => ({ color: "#f6f1e4", side: THREE.DoubleSide })),
+  red: () => lam("redC", () => ({ color: "#c8352f" })),
+  green: () => lam("boxGreenC", () => ({ color: "#2f8a4f" })),
+  brown: () => lam("bagC", () => ({ color: "#8d5a2b" })),
+  parch: () => lam("parchC", () => ({ color: "#e3c58d", side: THREE.DoubleSide })),
+  orange: () => lam("orangeC", () => ({ color: "#f08a24" })),
   glass: () => lam("glassC", () => ({ color: "#cfe8ff", emissive: "#9fc8f0", emissiveIntensity: 0.9 })),
 };
 
@@ -169,6 +176,68 @@ export const buildProps = (names: string[]): THREE.Group => {
       default: b.add(boxGeo(V(x - 0.4, 0, z - 0.4), V(x + 0.4, 0.8, z + 0.4), 1), M.wood());
     }
   });
+  b.build(g);
+  return g;
+};
+
+const RZ = (a: number, x: number, y: number, z: number) => new THREE.Matrix4().makeRotationZ(a).setPosition(x, y, z);
+const bx = (w: number, h: number, d: number) => new THREE.BoxGeometry(w, h, d);
+
+/** insert-shot objects: sit on the ground at the origin, ~0.3-0.9 m, built to be seen from the -z side */
+export const buildFocus = (name: string): THREE.Group => {
+  const g = new THREE.Group(), b = new Batch();
+  switch (name) {
+    case "coin":
+      for (let k = 0; k < 3; k++) b.add(new THREE.CylinderGeometry(0.22, 0.22, 0.035, 28), M.gold(), T(k * 0.05, 0.02 + k * 0.037, 0.04 * k));
+      b.add(new THREE.CylinderGeometry(0.22, 0.22, 0.035, 28), M.gold(), T(0.42, 0.02, -0.1));
+      break;
+    case "paper": b.add(bx(0.5, 0.72, 0.012), M.paper(), RZ(0.05, 0, 0.37, 0)); break;
+    case "calendar":
+      b.add(bx(0.62, 0.8, 0.12), M.green(), T(0, 0.4, 0));
+      b.add(bx(0.5, 0.56, 0.02), M.paper(), T(0, 0.43, -0.07));
+      b.add(bx(0.5, 0.13, 0.025), M.red(), T(0, 0.64, -0.075));
+      break;
+    case "newspaper": {
+      b.add(bx(0.95, 0.68, 0.012), M.paper(), RZ(-0.04, 0, 0.42, 0));
+      b.add(bx(0.8, 0.1, 0.014), M.dark(), RZ(-0.04, 0, 0.66, -0.01));
+      for (let k = 0; k < 4; k++) b.add(bx(0.38, 0.02, 0.014), M.dark(), RZ(-0.04, (k % 2 ? 0.2 : -0.2), 0.5 - Math.floor(k / 2) * 0.1, -0.01));
+      break;
+    }
+    case "caliper":
+      b.add(bx(0.8, 0.05, 0.04), M.steel(), T(0, 0.55, 0));
+      b.add(bx(0.045, 0.5, 0.04), M.steel(), T(-0.13, 0.28, 0));
+      b.add(bx(0.045, 0.5, 0.04), M.steel(), T(0.13, 0.28, 0));
+      b.add(bx(0.14, 0.11, 0.07), M.iron(), T(0.13, 0.55, 0));
+      break;
+    case "thermometer":
+      b.add(new THREE.CylinderGeometry(0.05, 0.05, 0.9, 12), M.paper(), T(0, 0.55, 0));
+      b.add(new THREE.CylinderGeometry(0.028, 0.028, 0.6, 12), M.red(), T(0, 0.4, -0.01));
+      b.add(new THREE.SphereGeometry(0.1, 14, 10), M.red(), T(0, 0.1, 0));
+      for (let k = 0; k < 6; k++) b.add(bx(0.09, 0.012, 0.012), M.dark(), T(0.09, 0.3 + k * 0.12, -0.04));
+      break;
+    case "moneybag":
+      b.add(new THREE.SphereGeometry(0.38, 16, 12), M.brown(), T(0, 0.38, 0));
+      b.add(new THREE.CylinderGeometry(0.1, 0.2, 0.22, 12), M.brown(), T(0, 0.78, 0));
+      b.add(bx(0.3, 0.05, 0.3), M.gold(), T(0, 0.7, 0));
+      b.add(new THREE.CylinderGeometry(0.16, 0.16, 0.03, 20), M.gold(), T(0.55, 0.02, -0.15));
+      break;
+    case "map":
+      b.add(bx(1.0, 0.7, 0.012), M.parch(), RZ(0.03, 0, 0.42, 0));
+      b.add(bx(0.4, 0.05, 0.014), M.red(), RZ(0.03 + Math.PI / 4, 0.1, 0.4, -0.01));
+      b.add(bx(0.4, 0.05, 0.014), M.red(), RZ(0.03 - Math.PI / 4, 0.1, 0.4, -0.01));
+      break;
+    case "clock":
+      b.add(new THREE.CylinderGeometry(0.44, 0.44, 0.07, 28), M.iron(), new THREE.Matrix4().makeRotationX(Math.PI / 2).setPosition(0, 0.5, 0.02));
+      b.add(new THREE.CylinderGeometry(0.39, 0.39, 0.07, 28), M.paper(), new THREE.Matrix4().makeRotationX(Math.PI / 2).setPosition(0, 0.5, -0.02));
+      b.add(bx(0.03, 0.26, 0.02), M.dark(), RZ(0.5, 0, 0.58, -0.06));
+      b.add(bx(0.03, 0.34, 0.02), M.dark(), RZ(-1.1, 0.07, 0.52, -0.065));
+      break;
+    case "marble":
+      b.add(new THREE.SphereGeometry(0.18, 20, 14), M.glass(), T(0, 0.18, 0));
+      b.add(bx(0.3, 0.3, 0.3), M.orange(), T(0.6, 0.15, 0.4));
+      break;
+    default: b.add(bx(0.6, 0.6, 0.6), M.wood(), T(0, 0.3, 0));
+  }
   b.build(g);
   return g;
 };

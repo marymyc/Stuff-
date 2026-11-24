@@ -14,6 +14,7 @@ camera grammar measured from 20 reference shorts. The Blender path (`src/stuff/b
 | `camera.ts` | plan-driven camera: ease-out glide, creeping holds, dutch roll on the punch |
 | `sets.ts` | procedural sets: field, fortress, canyon (rails), interior, town + props. No Kenney download needed |
 | `stage.ts` | outfits per role, expressions, blinks, contact shadows, burst/puff/stars fx |
+| insert shots | `PlanShot.focus` -> `sets.buildFocus()` (coin, paper, calendar, newspaper, caliper, thermometer, moneybag, map, clock, marble), tight low camera in `camera.ts` |
 | `world.ts` | the bridge world's sky / light rig / clouds / cast plumbing, driven by the plan |
 | `Short.tsx` | composition (ink -> blur -> bloom -> grade) + word-by-word captions (1-2 words, ~70 % height) |
 | `tools/make_plan.py` | script -> plan.json, reusing `stuff.planner` + Chatterbox voice + timeline |
@@ -40,4 +41,5 @@ camera grammar measured from 20 reference shorts. The Blender path (`src/stuff/b
 - Typecheck of the whole engine: passes. Plan generation from the sample scripts: passes.
 - Two software-GL stills of the generic layer were seen (canyon, hero/tycoon, captions) and looked in-style. After them the ground height
   and screen-side placement were changed and have NOT been seen rendered.
-- Not verified: any full video, GPU rendering on Colab, the castle/interior/town/field sets, Chatterbox inside this pipeline.
+- Checked without rendering: tsc, 11 unit tests (incl. the plan contract and insert shots), plans + audio mix for the 3 sample scripts, notebook validity.
+- Not verified: any full video, the new insert-shot objects, GPU rendering on Colab, the castle/interior/town/field sets, Chatterbox inside this pipeline.

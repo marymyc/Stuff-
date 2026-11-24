@@ -55,7 +55,7 @@ def make(script, out_path, voice="chatterbox", ref=None, fps=30):
         shots.append({
             "id": s["id"] + 1, "a": a, "b": b, "set": s["kit"], "light": LIGHT.get(s["tod"], "day"),
             "size": s["shot_size"], "move": s["camera_move"], "chars": map_chars(s, fps),
-            "props": s.get("props", []), "fx": ["burst" if f == "explosion" else f for f in s.get("fx", [])],
+            "props": s.get("props", []), **({"focus": s["focus"]} if s.get("focus") else {}), "fx": ["burst" if f == "explosion" else f for f in s.get("fx", [])],
             **({"xfade": 8} if s["transition"] == "dissolve" and s["id"] > 0 else {}),
         })
         for w in s["words"]:

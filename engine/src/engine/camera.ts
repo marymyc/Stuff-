@@ -9,8 +9,11 @@ const SIZE: Record<string, [number, number, number, number]> = {
   medium_low: [5.2, 0.8, 42, 1.35], close: [3.1, 1.1, 34, 1.45], macro: [1.8, 0.8, 30, 0.9],
 };
 
+// insert shots: tight, low, looking at an object that sits on the ground at the origin
+const FOCUS: [number, number, number, number] = [1.15, 0.5, 30, 0.22];
+
 export const camAt = (s: PlanShot, f: number): Cam => {
-  const [r, h0b, fov, fy0] = SIZE[s.size] ?? SIZE.medium, gy = GROUND_Y[s.set] ?? 0, h = h0b + gy, fy = fy0 + gy;
+  const [r, h0b, fov, fy0] = (s.focus ? FOCUS : SIZE[s.size]) ?? SIZE.medium, gy = GROUND_Y[s.set] ?? 0, h = h0b + gy, fy = fy0 + gy;
   const n = Math.max(1, s.b - s.a), u = glide(clamp01((f - s.a) / Math.max(18, n * 0.8)));
   const creep = 1 - 0.0018 * Math.max(0, f - s.a - n * 0.5);
   const side = s.id % 2 ? 1 : -1, az0 = side * (s.size === "close" ? 0.12 : 0.3);
