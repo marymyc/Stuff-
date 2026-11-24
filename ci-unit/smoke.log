@@ -2,4 +2,4 @@
 [stuff] WARNING: total 44.998s is outside the 55-75s target; adjust the script length
 [stuff] timeline: 44.998s, voice=silent
 [stuff] rendered 15 clips with pil
-[stuff] done: /home/runner/work/Stuff-/Stuff-/work/smoke/sample_script.mp4 {'width': 180, 'height': 320, 'duration': 45.0, 'has_audio': True, 'ok': True, 'captions_burned': True, 'seconds_taken': 3.9}
+[stuff] done: /home/runner/work/Stuff-/Stuff-/work/smoke/sample_script.mp4 {'width': 180, 'height': 320, 'duration': 45.0, 'has_audio': True, 'ok': True, 'captions_burned': True, 'seconds_taken': 4.7}

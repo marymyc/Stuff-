@@ -1,7 +1,7 @@
 cffi==2.1.1
 iniconfig==2.3.1
 numpy==2.4.6
-packaging==26.3
+packaging==26.4
 pillow==13.0.0
 pluggy==1.7.0
 pycparser==3.12
@@ -9,5 +9,5 @@ Pygments==2.21.0
 pytest==9.2.0
 scipy==1.17.1
 soundfile==0.14.0
--e git+https://github.com/marymyc/Stuff-@16553c4cc56d85ff7066cd5683583feffbdd6a67#egg=stuff_video_factory
+-e git+https://github.com/marymyc/Stuff-@41848e88da2a4ffaa514d7da8ae28fc08c7b7881#egg=stuff_video_factory
 typing_extensions==4.16.0
