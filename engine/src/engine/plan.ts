@@ -5,6 +5,7 @@ export type Who = {
   expr: string;                         // neutral stern grin laugh whistle nervous shock relief dazed pained smile smile_closed lick
   x: number; z?: number;                // metres from the shot's focus point
   mode?: "stand" | "stroll"; scale?: number;
+  action?: "point" | "wave" | "sit" | "hop" | "stroll";   // what the character DOES during the shot (rubber-hose snap on start)
 };
 export type PlanShot = {
   id: number; a: number; b: number;     // frame range [a, b)

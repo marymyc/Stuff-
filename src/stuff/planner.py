@@ -52,6 +52,13 @@ INSERTS = {  # object keyword -> close-up "insert" shot of that object (macro, n
     "thermometer": ["thermometer", "temperature", "degrees"], "moneybag": ["money", "dollars", "cash", "fortune", "profit"],
     "map": ["map", "maps"], "clock": ["clock", "watch", "o'clock"], "marble": ["marble", "ball"],
 }
+ACTIONS = [  # what the lead character does during the beat (first match wins)
+    ("point", ["pointed", "points", "pointing", "showed", "shows", "showing", "demanded", "insisted"]),
+    ("wave", ["waved", "waving", "greeted", "hello", "welcomed", "cheered"]),
+    ("sit", ["sat", "sitting", "relaxed", "rested", "lounging", "waited"]),
+    ("hop", ["suddenly", "jumped", "startled", "gasped", "shocked", "froze"]),
+    ("stroll", ["walked", "walking", "marched", "strolled", "ran", "rushed", "arrived"]),
+]
 BREAK_BEFORE = {"and", "but", "because", "until", "while", "when", "so", "then", "after", "before", "which",
                 "where", "as"}
 EMPH_WORDS = {"never", "only", "perfect", "impossible", "million", "billion", "every", "nobody", "everything"}
@@ -109,6 +116,13 @@ def detect_expression(tokens, default="neutral"):
         if any(t in words for t in tokens):
             return expr
     return default
+
+
+def pick_action(tokens):
+    for name, words in ACTIONS:
+        if any(t in words for t in tokens):
+            return name
+    return None
 
 
 def pick_focus(tokens):
@@ -207,6 +221,7 @@ def build_plan(text: str, title: str | None = None) -> dict:
             "transition": transition, "characters": pick_characters(toks, size, expr), "props": props,
             "fx": fx, "sfx": pick_sfx(toks, size, i, expr), "emphasis": pick_emphasis(t),
             **({"focus": focus} if focus else {}),
+            **({"action": pick_action(toks)} if pick_action(toks) else {}),
         })
     words = sum(len(s["text"].split()) for s in shots)
     return {"version": 1, "title": title or "untitled", "meta": {"words": words, "est_seconds": round(words / WPS, 1)},

@@ -40,3 +40,11 @@ def test_plan_is_json_and_mix_fields_present(tmp_path):
     p = _plan(tmp_path)
     json.dumps(p)
     assert len(p["voice"]["wavs"]) == len(p["voice"]["starts"]) == len(p["shots"])
+
+
+def test_point_action_goes_to_the_boss(tmp_path):
+    s = tmp_path / "s.txt"
+    s.write_text("Two companies raced across a canyon. The tycoon pointed at his workers. Boom.")
+    p = mp.make(str(s), str(tmp_path / "plan.json"), voice="silent")
+    pointers = [c for sh in p["shots"] for c in sh["chars"] if c.get("action") == "point"]
+    assert pointers and all(c["outfit"] in ("tycoon", "commander") for c in pointers)

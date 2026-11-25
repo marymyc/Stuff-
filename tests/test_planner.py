@@ -25,3 +25,9 @@ def test_no_three_equal_sizes_in_a_row():
     p = build_plan("He walked. " * 30, "t")
     sizes = [s["shot_size"] for s in p["shots"]]
     assert not any(sizes[i] == sizes[i + 1] == sizes[i + 2] for i in range(len(sizes) - 2))
+
+
+def test_actions_detected():
+    p = build_plan("The boss pointed at the gap. He waved hello. They sat down. Suddenly it broke. She walked away.", "t")
+    acts = {s.get("action") for s in p["shots"]}
+    assert {"point", "wave", "sit", "hop", "stroll"} <= acts

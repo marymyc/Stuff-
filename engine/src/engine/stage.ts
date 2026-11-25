@@ -22,18 +22,30 @@ export const outfitFor = (name: string, i: number): Outfit => {
 
 const EXPRS = new Set(["neutral", "stern", "grin", "laugh", "whistle", "nervous", "shock", "relief", "relief_open", "dazed", "pained", "smile", "smile_closed", "lick"]);
 const q = (v: number, n = 30) => Math.round(v * n) / n;
+/** damped spring: 0 -> overshoots to ~1.2 -> settles at 1. The "rubber-hose snap" of arms, props and landings. */
+export const spring = (u: number) => (u <= 0 ? 0 : u >= 1.8 ? 1 : 1 - Math.exp(-5.5 * u) * Math.cos(11 * u));
 
 export const stageShot = (s: PlanShot, f: number, fps: number, cam: CamInfo): Stage => {
   setStageLight(s.light, cam);
   const t = f / fps, out: Stage = { places: [], fx: [] }, gy = GROUND_Y[s.set] ?? 0;
+  const ts = (f - s.a) / fps;                                   // seconds since the shot started
   s.chars.forEach((c, k) => {
-    const i = s.id * 10 + k, o = outfitFor(c.outfit, i), sc = c.scale ?? 1;
+    const i = s.id * 10 + k, o = { ...outfitFor(c.outfit, i), limb: INK }, sc = c.scale ?? 1;   // thin pure-black limbs
     const who: CastWho = { i, o, okey: `${c.outfit}${i % 4}` };
     const expr = (EXPRS.has(c.expr) ? c.expr : "neutral") as Expr;
-    const stroll = c.mode === "stroll";
-    const fo: FrontOpts = { mode: stroll ? "stroll" : "stand", phase: stroll ? q((t * 1.1) % 1, 60) : 0, expr, blink: lidAt(t, i), look: 0 };
+    const act = c.action ?? (c.mode === "stroll" ? "stroll" : undefined);
+    const stroll = act === "stroll";
+    const snap = spring((ts - 0.12) / 0.55);                    // starts 0.12 s into the shot, overshoots, settles
+    const fo: FrontOpts = {
+      mode: act === "sit" ? "sit" : stroll ? "stroll" : "stand", phase: stroll ? q((t * 1.1) % 1, 60) : 0, expr, blink: lidAt(t, i), look: 0,
+      tilt: q(1.1 * Math.sin(t * 1.3 + i), 4), headTilt: q(2.2 * Math.sin(t * 0.9 + 2 * i), 4),     // idle sway so nobody freezes
+    };
+    if (act === "wave") fo.wave = q(Math.sin(2 * Math.PI * 1.7 * t), 12);
+    if (act === "point") fo.prop = ["cane", q(snap, 20)];
+    else if (c.outfit === "rival" || c.outfit === "tycoon") fo.prop = ["cane", 0];               // the boss always leans on his cane
+    const hop = act === "hop" || expr === "shock" ? 0.3 * Math.max(0, Math.sin(Math.min(1, ts / 0.45) * Math.PI)) * Math.exp(-2.2 * ts) : 0;
     const x = c.x, z = (c.z ?? 0) + (stroll ? 0.35 * Math.sin(t * 0.8) : 0);
-    out.places.push(person(cam, who, x, gy, z, { side: false, mirror: false }, fo, {}, sc));
+    out.places.push(person(cam, who, x, gy + q(hop, 40), z, { side: false, mirror: false }, fo, {}, sc));
     blob(out, x, gy, z, sc);
   });
   const u = Math.min(1, Math.max(0, (f - s.a) / 14));

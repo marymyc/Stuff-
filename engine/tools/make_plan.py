@@ -39,6 +39,10 @@ def map_chars(shot, fps):
         if role == "extra":  # a small crowd behind the lead
             for k, dx in enumerate((-1.4, 1.5, 0.2)):
                 out.append({"outfit": outfit, "expr": "shock", "x": dx * (sp / 0.8 + 0.5), "z": 1.6 + 0.6 * k, **({"scale": sc} if sc else {})})
+    act = shot.get("action")
+    if act and out:
+        pick = next((c for c in out if c["outfit"] in ("tycoon", "commander")), out[0]) if act == "point" else out[0]
+        pick["action"] = act
     return out
 
 

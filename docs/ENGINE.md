@@ -33,6 +33,12 @@ camera grammar measured from 20 reference shorts. The Blender path (`src/stuff/b
 | Original `Bridge.tsx` did not typecheck | fixed |
 | Needs a GPU | unchanged. Measured here: ~2.4 min per frame with software GL, so rendering is only practical on a GPU |
 
+## Character motion (rubber-hose style)
+Limbs are thin pure-black strokes (`Outfit.limb = INK`), each a 3-point curve (shoulder-elbow-hand, hip-knee-foot), so they bend; walking swings
+arms and lifts feet on a sine cycle. Added on top: a **spring** (`spring()` in `stage.ts`: overshoots ~23 % then settles) driving cane pointing,
+hops and landings; idle sway (tilt/head tilt) so nobody freezes; `action` per character from the plan: `point` (cane), `wave`, `sit`, `hop`, `stroll`.
+The boss (`tycoon`) always carries a cane. Not verified visually: cane pose, sit pose, hop. Not implemented: elastic foot rebound on every step.
+
 ## Rules
 - **Renders are run by the user only** (their GPU / Colab). The assistant and CI never render; CI does typecheck + plan only.
 - `engine/references/` (third-party frames) is not published.
