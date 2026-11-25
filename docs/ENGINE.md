@@ -39,6 +39,12 @@ arms and lifts feet on a sine cycle. Added on top: a **spring** (`spring()` in `
 hops and landings; idle sway (tilt/head tilt) so nobody freezes; `action` per character from the plan: `point` (cane), `wave`, `sit`, `hop`, `stroll`.
 The boss (`tycoon`) always carries a cane. Not verified visually: cane pose, sit pose, hop. Not implemented: elastic foot rebound on every step.
 
+## GPU on Colab
+Colab exposes the GPU for CUDA only (no EGL/Vulkan user-space), so Chromium used software GL (cell 4 failed with "No real GPU path").
+`tools/enable_gpu_gl.py` downloads the NVIDIA installer matching the running kernel driver, extracts only the graphics libraries and
+registers the EGL vendor file + Vulkan ICD; notebook cell 2 runs it automatically and re-probes. Unverified until the user runs it.
+Fallbacks if it still fails: a PC with a GPU, the Blender path, or a (slow, unmeasured) CPU render.
+
 ## Rules
 - **Renders are run by the user only** (their GPU / Colab). The assistant and CI never render; CI does typecheck + plan only.
 - `engine/references/` (third-party frames) is not published.
