@@ -134,7 +134,7 @@ def pick_focus(tokens):
 
 def pick_size(text, low, tokens, i, prev_sizes):
     if i == 0:
-        return "wide_aerial"
+        return "medium_low"          # the hook shows a face at once (both references open on a character)
     prev = prev_sizes[-1] if prev_sizes else None
     if any(k in low for k in AERIAL):
         return "wide_aerial" if prev != "wide_aerial" else "wide"

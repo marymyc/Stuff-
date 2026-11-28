@@ -23,3 +23,8 @@ build plans (`tools/make_plan.py`) and audio, and push to GitHub. Anything visua
 - A user-supplied reference voice goes in `assets/voice/` and is passed with `--ref-voice`. Never commit audio or keys.
 - When something fails, read the traceback, fix the cause in `src/`, re-run. Do not claim success without a passing `report.json`.
 - CI results are pushed to branch `ci-report` (`<job>/…`); read them there before declaring a stage verified.
+
+## Default pipeline: `hybrid/` (see `docs/HYBRID.md`)
+`python hybrid/tools/make.py script.txt --name NAME` (user-run). An assistant may: edit code, run `npx tsc --noEmit` in `hybrid/`,
+`python hybrid/tools/make_hybrid_plan.py script.txt --voice silent` (plan + validator, no render), `python hybrid/tools/check_scene_build.py`
+(builds sets in bpy, no render) and `pytest`. Never export cards, render frames or encode video.

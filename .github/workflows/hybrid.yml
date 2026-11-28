@@ -1,0 +1,49 @@
+name: hybrid
+# Typecheck, plan + validator, Blender SCENE BUILD (no render), tests. Nothing here renders: renders are run by the user only.
+on:
+  push:
+    branches: [main]
+    paths: ["hybrid/**", "src/stuff/**", "tests/**", ".github/workflows/hybrid.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+defaults:
+  run:
+    shell: bash
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  hybrid:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: System packages
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core libsndfile1 libxi6 libxxf86vm1 libxfixes3 libgl1 libxrender1 libsm6 libegl1 libxkbcommon0 libx11-6 libglu1-mesa
+      - name: Install
+        run: |
+          pip install -e ".[dev]" bpy==4.2.0
+          cd hybrid && npm install --no-audit --no-fund --loglevel=error
+      - name: Typecheck
+        run: cd hybrid && npx tsc --noEmit 2>&1 | tee ../tsc.log
+      - name: Plan from script + validator (silent voice)
+        run: cd hybrid && python tools/make_hybrid_plan.py ../examples/sample_script.txt --voice silent 2>&1 | tee ../plan.log
+      - name: Blender scene build (no render)
+        run: python hybrid/tools/check_scene_build.py 2>&1 | tee scene.log
+      - name: Unit tests
+        run: python -m pytest 2>&1 | tee pytest.log
+      - name: Publish report
+        if: ${{ always() }}
+        env:
+          JOB_STATUS: ${{ job.status }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for f in tsc.log plan.log scene.log; do [ -f "$f" ] && cp "$f" reports/ 2>/dev/null || { mkdir -p reports; cp "$f" reports/ 2>/dev/null || true; }; done
+          bash scripts/publish_report.sh hybrid

@@ -13,7 +13,7 @@ def test_plan_shape_and_rules():
     p = build_plan(TEXT, "t")
     assert validate_plan(p) == []
     shots = p["shots"]
-    assert shots[0]["shot_size"] == "wide_aerial"
+    assert shots[0]["shot_size"] == "medium_low" and shots[0]["characters"]
     assert shots[0]["kit"] == "canyon"
     assert any(s["tod"] == "dawn" and s["transition"] == "dissolve" for s in shots)
     assert any(c["expression"] == "rage" for s in shots for c in s["characters"])

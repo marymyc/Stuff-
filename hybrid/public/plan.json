@@ -1,0 +1,786 @@
+{
+ "schemaVersion": 2,
+ "title": "In 1869 Two Railroad Companies Were Racing",
+ "description": "In 1869, two railroad companies were racing across the desert, and the first line to finish would get the whole country's money. A short animated explainer.",
+ "hashtags": [
+  "#shorts",
+  "#story",
+  "#history",
+  "#animation"
+ ],
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "totalFrames": 1350,
+ "flashAt": 109,
+ "voice": {
+  "provider": "chatterbox",
+  "model": "chatterbox-tts",
+  "seed": 1234
+ },
+ "lightingChanges": 1,
+ "shots": [
+  {
+   "id": 1,
+   "a": 0,
+   "b": 109,
+   "set": "canyon",
+   "zone": 0,
+   "size": "medium_low",
+   "move": "push_in_low",
+   "light": "day",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.5
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    1.537,
+    1.16,
+    4.968
+   ],
+   "camEnd": [
+    0.764,
+    0.81,
+    2.469
+   ],
+   "lookAt": [
+    0.0,
+    1.71,
+    0
+   ],
+   "fov": 42,
+   "landFrames": [
+    100,
+    109
+   ],
+   "punchWords": [
+    "the"
+   ]
+  },
+  {
+   "id": 2,
+   "a": 109,
+   "b": 217,
+   "set": "canyon",
+   "zone": 0,
+   "size": "close",
+   "move": "push_in",
+   "light": "day",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.3
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    -0.371,
+    1.46,
+    3.078
+   ],
+   "camEnd": [
+    -0.208,
+    1.46,
+    1.726
+   ],
+   "lookAt": [
+    0.0,
+    1.81,
+    0
+   ],
+   "fov": 34,
+   "landFrames": [
+    208,
+    217
+   ],
+   "punchWords": [
+    "get"
+   ]
+  },
+  {
+   "id": 3,
+   "a": 217,
+   "b": 268,
+   "set": "canyon",
+   "zone": 0,
+   "size": "macro",
+   "move": "slide",
+   "light": "day",
+   "chars": [],
+   "props": [],
+   "fx": [],
+   "focus": "moneybag",
+   "camStart": [
+    -1.26,
+    0.86,
+    1.099
+   ],
+   "camEnd": [
+    1.925,
+    0.86,
+    1.05
+   ],
+   "lookAt": [
+    -1.6,
+    0.58,
+    0
+   ],
+   "fov": 30,
+   "landFrames": [
+    259,
+    268
+   ],
+   "punchWords": [
+    "money"
+   ]
+  },
+  {
+   "id": 4,
+   "a": 268,
+   "b": 400,
+   "set": "canyon",
+   "zone": 0,
+   "size": "medium_low",
+   "move": "push_in_low",
+   "light": "day",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "stern",
+     "x": -0.5
+    },
+    {
+     "outfit": "tycoon",
+     "expr": "stern",
+     "x": 0.5
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    -1.537,
+    1.16,
+    4.968
+   ],
+   "camEnd": [
+    -0.746,
+    0.81,
+    2.413
+   ],
+   "lookAt": [
+    0.0,
+    1.71,
+    0
+   ],
+   "fov": 42,
+   "landFrames": [
+    391,
+    400
+   ],
+   "punchWords": [
+    "down"
+   ]
+  },
+  {
+   "id": 5,
+   "a": 400,
+   "b": 509,
+   "set": "canyon",
+   "zone": 0,
+   "size": "medium",
+   "move": "orbit_slow",
+   "light": "day",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.8
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    -0.619,
+    1.51,
+    6.169
+   ],
+   "camEnd": [
+    3.61,
+    1.51,
+    4.285
+   ],
+   "lookAt": [
+    0.0,
+    1.51,
+    0
+   ],
+   "fov": 40,
+   "landFrames": [
+    500,
+    509
+   ],
+   "punchWords": [
+    "saw"
+   ]
+  },
+  {
+   "id": 6,
+   "a": 509,
+   "b": 583,
+   "set": "canyon",
+   "zone": 0,
+   "size": "macro",
+   "move": "slide",
+   "light": "day",
+   "chars": [],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    -2.132,
+    1.16,
+    1.72
+   ],
+   "camEnd": [
+    1.103,
+    1.16,
+    1.608
+   ],
+   "lookAt": [
+    -1.6,
+    1.26,
+    0
+   ],
+   "fov": 30,
+   "landFrames": [
+    574,
+    583
+   ],
+   "punchWords": [
+    "gap"
+   ]
+  },
+  {
+   "id": 7,
+   "a": 583,
+   "b": 645,
+   "set": "canyon",
+   "zone": 0,
+   "size": "close",
+   "move": "push_in",
+   "light": "day",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "smug",
+     "x": -0.3
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    0.371,
+    1.46,
+    3.078
+   ],
+   "camEnd": [
+    0.218,
+    1.46,
+    1.805
+   ],
+   "lookAt": [
+    0.0,
+    1.81,
+    0
+   ],
+   "fov": 34,
+   "landFrames": [
+    636,
+    645
+   ],
+   "punchWords": [
+    "wide"
+   ]
+  },
+  {
+   "id": 8,
+   "a": 645,
+   "b": 687,
+   "set": "canyon",
+   "zone": 0,
+   "size": "close",
+   "move": "push_in",
+   "light": "day",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.3
+    },
+    {
+     "outfit": "tycoon",
+     "expr": "stern",
+     "x": 0.3
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    -0.371,
+    1.46,
+    3.078
+   ],
+   "camEnd": [
+    -0.222,
+    1.46,
+    1.839
+   ],
+   "lookAt": [
+    0.0,
+    1.81,
+    0
+   ],
+   "fov": 34,
+   "landFrames": [
+    678,
+    687
+   ],
+   "punchWords": [
+    "laughed"
+   ]
+  },
+  {
+   "id": 9,
+   "a": 687,
+   "b": 807,
+   "set": "canyon",
+   "zone": 0,
+   "size": "close",
+   "move": "push_in",
+   "light": "day",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "grin",
+     "x": -0.3
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    0.371,
+    1.46,
+    3.078
+   ],
+   "camEnd": [
+    0.206,
+    1.46,
+    1.706
+   ],
+   "lookAt": [
+    0.0,
+    1.81,
+    0
+   ],
+   "fov": 34,
+   "landFrames": [
+    798,
+    807
+   ],
+   "punchWords": [
+    "matter"
+   ]
+  },
+  {
+   "id": 10,
+   "a": 807,
+   "b": 916,
+   "set": "canyon",
+   "zone": 0,
+   "size": "medium",
+   "move": "orbit_slow",
+   "light": "golden",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "nervous",
+     "x": -0.8
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    -3.994,
+    1.51,
+    4.742
+   ],
+   "camEnd": [
+    0.559,
+    1.51,
+    5.575
+   ],
+   "lookAt": [
+    0.0,
+    1.51,
+    0
+   ],
+   "fov": 40,
+   "landFrames": [
+    907,
+    916
+   ],
+   "punchWords": [
+    "steel"
+   ]
+  },
+  {
+   "id": 11,
+   "a": 916,
+   "b": 1013,
+   "set": "canyon",
+   "zone": 0,
+   "size": "medium",
+   "move": "orbit_slow",
+   "light": "golden",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.8
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    -0.619,
+    1.51,
+    6.169
+   ],
+   "camEnd": [
+    3.653,
+    1.51,
+    4.337
+   ],
+   "lookAt": [
+    0.0,
+    1.51,
+    0
+   ],
+   "fov": 40,
+   "landFrames": [
+    1004,
+    1013
+   ],
+   "punchWords": [
+    "neighbor"
+   ]
+  },
+  {
+   "id": 12,
+   "a": 1013,
+   "b": 1122,
+   "set": "canyon",
+   "zone": 0,
+   "size": "close",
+   "move": "push_in",
+   "light": "golden",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.3
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    -0.371,
+    1.46,
+    3.078
+   ],
+   "camEnd": [
+    -0.208,
+    1.46,
+    1.724
+   ],
+   "lookAt": [
+    0.0,
+    1.81,
+    0
+   ],
+   "fov": 34,
+   "landFrames": [
+    1113,
+    1122
+   ],
+   "punchWords": [
+    "snake"
+   ]
+  },
+  {
+   "id": 13,
+   "a": 1122,
+   "b": 1230,
+   "set": "canyon",
+   "zone": 0,
+   "size": "wide",
+   "move": "pull_back",
+   "light": "golden",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "stern",
+     "x": -1.6,
+     "scale": 1.8
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    2.66,
+    1.932,
+    8.598
+   ],
+   "camEnd": [
+    4.21,
+    3.036,
+    13.611
+   ],
+   "lookAt": [
+    0.0,
+    1.66,
+    0
+   ],
+   "fov": 46,
+   "landFrames": [
+    1221,
+    1230
+   ],
+   "punchWords": [
+    "made"
+   ]
+  },
+  {
+   "id": 14,
+   "a": 1230,
+   "b": 1293,
+   "set": "canyon",
+   "zone": 0,
+   "size": "medium_low",
+   "move": "dutch_push",
+   "light": "golden",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "neutral",
+     "x": -0.5
+    }
+   ],
+   "props": [],
+   "fx": [],
+   "camStart": [
+    -1.537,
+    1.16,
+    4.968
+   ],
+   "camEnd": [
+    -0.871,
+    1.16,
+    2.817
+   ],
+   "lookAt": [
+    0.0,
+    1.71,
+    0
+   ],
+   "fov": 42,
+   "landFrames": [
+    1284,
+    1293
+   ],
+   "punchWords": [
+    "side"
+   ]
+  },
+  {
+   "id": 15,
+   "a": 1293,
+   "b": 1350,
+   "set": "canyon",
+   "zone": 0,
+   "size": "medium",
+   "move": "dutch_push",
+   "light": "golden",
+   "chars": [
+    {
+     "outfit": "hero",
+     "expr": "meme_shock",
+     "x": -0.8
+    }
+   ],
+   "props": [],
+   "fx": [
+    "burst"
+   ],
+   "camStart": [
+    1.832,
+    1.51,
+    5.923
+   ],
+   "camEnd": [
+    1.045,
+    1.51,
+    3.378
+   ],
+   "lookAt": [
+    0.0,
+    1.51,
+    0
+   ],
+   "fov": 40,
+   "landFrames": [
+    1341,
+    1350
+   ],
+   "punchWords": [
+    "boom"
+   ]
+  }
+ ],
+ "actors": [
+  {
+   "id": "hero",
+   "firstFaceSec": 0.0,
+   "pos": [
+    -0.5,
+    0.0,
+    0.0
+   ],
+   "radius": 0.35,
+   "height": 1.95,
+   "grounded": true,
+   "poseTransitions": [
+    {
+     "frame": 0,
+     "expr": "neutral",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 109,
+     "expr": "neutral",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 268,
+     "expr": "stern",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 400,
+     "expr": "neutral",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 583,
+     "expr": "smug",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 645,
+     "expr": "neutral",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 687,
+     "expr": "grin",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 807,
+     "expr": "nervous",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 916,
+     "expr": "neutral",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 1013,
+     "expr": "neutral",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 1122,
+     "expr": "stern",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 1230,
+     "expr": "neutral",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 1293,
+     "expr": "meme_shock",
+     "mode": "stand",
+     "note": "stand"
+    }
+   ],
+   "blinkFrames": []
+  },
+  {
+   "id": "tycoon",
+   "firstFaceSec": 0.0,
+   "pos": [
+    0.5,
+    0.0,
+    0.0
+   ],
+   "radius": 0.35,
+   "height": 1.95,
+   "grounded": true,
+   "poseTransitions": [
+    {
+     "frame": 268,
+     "expr": "stern",
+     "mode": "stand",
+     "note": "stand"
+    },
+    {
+     "frame": 645,
+     "expr": "stern",
+     "mode": "stand",
+     "note": "stand"
+    }
+   ],
+   "blinkFrames": []
+  }
+ ],
+ "props": [],
+ "flags": {
+  "poseSnapNoIdleBounce": true,
+  "staticBeatFaces": true,
+  "noBlinkWhileSpeaking": true,
+  "postGrainMax": 0.006,
+  "noInkCards": true
+ }
+}

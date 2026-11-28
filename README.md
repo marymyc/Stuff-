@@ -46,7 +46,12 @@ python -m stuff preflight --mode all                                         # �
 
 لإضافة موضوع جديد (بحر أو مدينة أو مختبر…) اكتب دالة kit جديدة في `kits.py` وسجّلها في `KITS`، وأضف كلماتها المفتاحية في `planner.KIT_WORDS`.
 
-## المحرك الجديد (الأسلوب المقترح بدل Blender)
+## الخط الهجين (الافتراضي الجديد): Blender للعالم + بطاقات 2D للشخصيات
+مبني على مشروع `ricks-clip-skill` (رخصة MIT): رندر Blender بـ Cycles على GPU (لا يحتاج OpenGL)، والشخصيات بطاقات Canvas2D، والترجمة والصوت بـ ffmpeg.
+- التفاصيل: `docs/HYBRID.md` والمجلد `hybrid/`.
+- التشغيل: `notebooks/colab_hybrid.ipynb` أو `python hybrid/tools/make.py script.txt`. **الرندر يشغّله المستخدم فقط.**
+
+## المحرك السابق (Remotion + three.js، يحتاج WebGL على GPU)
 مبني على قالب `animated-shorts-template` الخاص بك (Remotion + three.js): شخصيات 2D بحبر وتعابير، خامات مرسومة، عمق ميدان.
 - التفاصيل: `docs/ENGINE.md` والمجلد `engine/`.
 - التشغيل: `notebooks/colab_engine.ipynb` (يلزمه GPU؛ الخلية 2 تفحصه). **الرندر يشغّله المستخدم فقط.**
