@@ -1,0 +1,21 @@
+bpy==4.2.0
+certifi==2026.11.20
+cffi==2.1.1
+charset-normalizer==3.5.3
+Cython==3.3.2
+idna==3.20
+iniconfig==2.3.1
+numpy==2.4.6
+packaging==26.4
+pillow==13.0.0
+pluggy==1.7.0
+pycparser==3.12
+Pygments==2.21.0
+pytest==9.2.0
+requests==2.34.2
+scipy==1.17.1
+soundfile==0.14.0
+-e git+https://github.com/marymyc/Stuff-@520303332ea5f0a929f70723fa00135d89f23577#egg=stuff_video_factory
+typing_extensions==4.16.0
+urllib3==2.8.0
+zstandard==0.25.0

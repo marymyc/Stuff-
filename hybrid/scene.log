@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/home/runner/work/Stuff-/Stuff-/hybrid/tools/check_scene_build.py", line 21, in <module>
+    state = bs.build_scene(plan, "", cam, target, {})
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Stuff-/Stuff-/hybrid/scripts/blender_scene.py", line 533, in build_scene
+    build_focus(col, ZONE_DZ * zi, gy, s["focus"])
+  File "/home/runner/work/Stuff-/Stuff-/hybrid/scripts/blender_scene.py", line 505, in build_focus
+    put(lambda g: g.sphere((0, 0, z0 + 0.18), 0.18, 20, 12), "glass")
+  File "/home/runner/work/Stuff-/Stuff-/hybrid/scripts/blender_scene.py", line 460, in put
+    g = Geo(); builder(g); g.build(f"focus_{name}_{mat}", M(mat), col, oy)
+                                                          ^^^^^^
+  File "/home/runner/work/Stuff-/Stuff-/hybrid/scripts/blender_scene.py", line 233, in M
+    return t[name]()
+           ~^^^^^^
+KeyError: 'glass'
